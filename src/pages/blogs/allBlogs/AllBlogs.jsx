@@ -12,9 +12,14 @@ import { Link } from "react-router-dom";
 
 const AllBlogs = () => {
   const [blogs, setBlogs] = useState([]);
+  const token = localStorage.getItem('token')
   useEffect(() => {
     try {
-      axiosInstance.get(endPoints.pages.blogs).then((data) => {
+      axiosInstance.get(endPoints.pages.blogs, {
+        header: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then((data) => {
         setBlogs(data.data.data);
         console.log(data);
       });
@@ -31,19 +36,19 @@ const AllBlogs = () => {
           {blogs.map((item, index) => {
             return (
               <Grid size={4} key={index}>
-                <Card sx={{ maxWidth: 345 }}>
+                <Card sx={{ maxWidth: 345, bgcolor: "#29303E" , color:"white"  }}>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       {item.title}
                     </Typography>
                     <Typography
                       variant="body2"
-                      sx={{ color: "text.secondary" }}
+                      sx={{ color: "white" }}
                       dangerouslySetInnerHTML={{ __html: `${item.postText}`.slice(0, 300).concat("...") }}
                     ></Typography>
                   </CardContent>
                   <CardActions>
-                    <Link to={`/blogdetails/${item._id}`}><Button size="small">Learn More</Button></Link>
+                    <Link to={`/details/${item._id}`}><Button size="small">Learn More</Button></Link>
                   </CardActions>
                 </Card>
               </Grid>

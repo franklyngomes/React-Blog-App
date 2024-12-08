@@ -5,6 +5,8 @@ export const endPoints = {
     },
     pages: {
         blogs:"/allBlog",
-        blog_details: "blogdetails/_id"
+        details: "/blogdetails/",
+        category: "/showallcategory",
+        post:"/category/post/"
     }
 }

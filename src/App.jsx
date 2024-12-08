@@ -5,6 +5,7 @@ import Wrapper from "./pages/layout/wrapper/Wrapper";
 import AllBlogs from "./pages/blogs/allBlogs/AllBlogs";
 import BlogDetails from "./pages/blogs/blogDetails/BlogDetails";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import BlogCategory from "./pages/blogs/blogCategory/BlogCategory";
 function App() {
   const public_router = [
     {
@@ -22,9 +23,14 @@ function App() {
       component: <AllBlogs />,
     },
     {
-      path: "blog_details",
+      path: "/details/:id",
       component: <BlogDetails />,
     },
+    {
+      path:"/category",
+      component:<BlogCategory/>
+    }
+
   ];
 
   return (

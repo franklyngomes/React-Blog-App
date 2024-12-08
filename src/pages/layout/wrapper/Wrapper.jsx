@@ -1,8 +1,9 @@
-import React from 'react'
+import ResponsiveAppBar from '../header/Header'
 
 const Wrapper = ({children}) => {
   return (
     <>
+    <ResponsiveAppBar/>
       {children}
     </>
   )
